@@ -78,11 +78,11 @@ CREATE TABLE dependent (
 
 DELETE FROM employee;
 INSERT INTO employee VALUES ('James', 'E', 'Borg',
-        '888665555', '10-NOV-27', 'Houston,TX', 'M', 55000, null, null);
+        '888665555', '10-NOV-27', 'Houston,TX', 'M', 55000, null, 1);
 INSERT INTO employee VALUES ('Frank', 'T', 'Wong',
-        '333445555', '08-DEC-45', 'Houston,TX', 'M', 40000, '888665555', null);
+        '333445555', '08-DEC-45', 'Houston,TX', 'M', 40000, '888665555', 5);
 INSERT INTO employee VALUES ('Jennifer', 'S', 'Wallace',
-        '987654321', '20-JUN-31', 'Bellaire,TX', 'F', 43000, '888665555', null);
+        '987654321', '20-JUN-31', 'Bellaire,TX', 'F', 43000, '888665555', 4);
 
 DELETE FROM department;
 INSERT INTO department VALUES ('Research', 5, '333445555', '22-MAY-78');
