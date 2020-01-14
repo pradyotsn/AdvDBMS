@@ -76,25 +76,29 @@ CREATE TABLE dependent (
 );
 
 
+
+
+DELETE FROM employee;
+
+INSERT INTO employee VALUES ('James', 'E', 'Borg','888665555', '10-NOV-37', 'Houston,TX', 'M', 55000, null, null);        
+INSERT INTO employee VALUES ('Franklin', 'T', 'Wong','333445555', '08-DEC-55', 'Houston,TX', 'M', 40000, '888665555', null);
+INSERT INTO employee VALUES ('Jennifer', 'S', 'Wallace','987654321', '20-JUN-41', 'Bellaire,TX', 'F', 43000, '888665555', null);
+        
 DELETE FROM department;
 INSERT INTO department VALUES ('Research', 5, '333445555', '22-MAY-78');
 INSERT INTO department VALUES ('Administration', 4, '987654321', '01-JAN-85');
 INSERT INTO department VALUES ('Headquarters', 1, '888665555', '19-JUN-71');
 
-DELETE FROM employee;
+UPDATE employee SET DNO = 5 WHERE ssn = '333445555';
+UPDATE employee SET DNO = 4 WHERE ssn = '987654321';
+UPDATE employee SET DNO = 1 WHERE ssn = '888665555';
+
+
 INSERT INTO employee VALUES ('John', 'B', 'Smith','123456789', '09-Jan-65', 'Houston,TX', 'M', 30000, '333445555', 5);
-INSERT INTO employee VALUES ('Franklin', 'T', 'Wong','333445555', '08-DEC-45', 'Houston,TX', 'M', 40000, '888665555', 5);
 INSERT INTO employee VALUES ('Alicia', 'J', 'Zelaya','999887777', '19-JUL-68', 'Spring,TX', 'F', 25000, '987654321', 4);
-INSERT INTO employee VALUES ('Jennifer', 'S', 'Wallace','987654321', '20-JUN-31', 'Bellaire,TX', 'F', 43000, '888665555', 4);
 INSERT INTO employee VALUES ('Ramesh', 'K', 'Narayan','666884444', '15-SEP-62', 'Humble,TX', 'M', 38000, '333445555', 5);
 INSERT INTO employee VALUES ('Joyce', 'A', 'English','453453453', '31-JUL-72', 'Houston, TX', 'F', 25000, '333445555', 5);
 INSERT INTO employee VALUES ('Ahmad', 'V', 'Jabbar','987987987', '29-MAR-69', 'Houston,TX', 'M', 25000, '987654321', 4);
-INSERT INTO employee VALUES ('James', 'E', 'Borg','888665555', '10-NOV-27', 'Houston,TX', 'M', 55000, null, 1);
-
---UPDATE employee SET DNO = 5 WHERE ssn = '333445555';
---UPDATE employee SET DNO = 4 WHERE ssn = '987654321';
---UPDATE employee SET DNO = 1 WHERE ssn = '888665555';
-
 
 
 
