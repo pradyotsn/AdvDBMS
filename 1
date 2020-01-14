@@ -1,5 +1,5 @@
-1. Consider the following COMPANY relational database schema. 
-Create EMPLOYEE, DEPARTMENT, DEPT_LOCATIONS, PROJECT, WORKS_ON, and DEPENDENT tables .
+--1. Consider the following COMPANY relational database schema. 
+--Create EMPLOYEE, DEPARTMENT, DEPT_LOCATIONS, PROJECT, WORKS_ON, and DEPENDENT tables .
 
 DROP TABLE employee CASCADE CONSTRAINTS;
 CREATE TABLE employee (
@@ -73,8 +73,8 @@ CREATE TABLE dependent (
   foreign key (essn) references employee(ssn)
 );
 
-
-INSERT INTO EMPLOYEE VALUES('&Fname','&minit', '&Lname', '&Ssn', TO_DATE('&Bdate','DD-MM-YYYY'), '&Address', '&Sex', &SALARY, '&SUPER_SSN', &DNO);
+--use this to write in observation
+--INSERT INTO EMPLOYEE VALUES('&Fname','&minit', '&Lname', '&Ssn', TO_DATE('&Bdate','DD-MM-YYYY'), '&Address', '&Sex', &SALARY, '&SUPER_SSN', &DNO);
 
 
 
@@ -147,16 +147,19 @@ INSERT INTO works_on VALUES ('987654321', 20, 15.0);
 INSERT INTO works_on VALUES ('888665555', 20, null);
 
 
+--2. Display names of all employees.
+select fname,minit,lname from   employee;
+  
+  
+--3. Display all the employees from ‘HOUSTON’.
+--4. Add a column named Phone_no to employee table.
+--5. Assign the Phone_no for all employees.
+--6. View the structure of the table employee using describe.
+--7. Delete all the employees from ‘HUMBLE’
+--8. Rename employee as employee1.
+--9. Drop the table employee1.
 
 
-2. Display names of all employees.
-3. Display all the employees from ‘HOUSTON’.
-4. Add a column named Phone_no to employee table.
-5. Assign the Phone_no for all employees.
-6. View the structure of the table employee using describe.
-7. Delete all the employees from ‘HUMBLE’
-8. Rename employee as employee1.
-9. Drop the table employee1.
 
 
 
