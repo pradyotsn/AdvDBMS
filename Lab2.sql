@@ -140,8 +140,8 @@ create table teaches
 
 INSERT INTO INSTRUCTOR VALUES(58576,'Frodo','Dance',33400);
   ERROR at line 1:
-  ORA-00001: unique constraint (CSE22.SYS_C00133753) violated
+  ORA-00001: unique constraint (CSIS10.SYS_C00133753) violated
 
   INSERT INTO DEPARTMENT VALUES('Mech','Blah',9000);
   ERROR at line 1:
-  ORA-00001: unique constraint (CSE22.SYS_C00133747) violated
+  ORA-00001: unique constraint (CSIS10.SYS_C00133747) violated
