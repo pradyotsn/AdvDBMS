@@ -1,3 +1,7 @@
+Lab 2 Exercises
+--1. Consider the following UNIVERSITY database schema. Create tables DEPARTMENT, INSTRUCTOR, COURSE, SECTION, and TEACHES with the following structure.
+
+
 create table department
 	(dept_name		varchar(20),
 	 building		varchar(15),
@@ -10,9 +14,9 @@ create table course
 	 title			varchar(50),
 	 dept_name		varchar(20),
 	 credits		numeric(2,0) check (credits > 0),
-	 primary key (course_id),
-	 foreign key (dept_name) references department
-		on delete set null
+	 --primary key (course_id),
+	 --foreign key (dept_name) references department
+		--on delete set null
 	);
 
 create table instructor
@@ -20,9 +24,9 @@ create table instructor
 	 name			varchar(20) not null,
 	 dept_name		varchar(20),
 	 salary			numeric(8,2) check (salary > 29000),
-	 primary key (ID),
-	 foreign key (dept_name) references department
-		on delete set null
+	-- primary key (ID),
+	 --foreign key (dept_name) references department
+	--	on delete set null
 	);
 
 create table section
@@ -34,10 +38,10 @@ create table section
 	 building		varchar(15),
 	 room_number		varchar(7),
 	 time_slot_id		varchar(4),
-	 primary key (course_id, sec_id, semester, year),
-	 foreign key (course_id) references course
-		on delete cascade,
-		on delete set null
+	 --primary key (course_id, sec_id, semester, year),
+	-- foreign key (course_id) references course
+	--	on delete cascade,
+	--	on delete set null
 	);
 
 create table teaches
@@ -46,14 +50,11 @@ create table teaches
 	 sec_id			varchar(8),
 	 semester		varchar(6),
 	 year			numeric(4,0),
-	 primary key (ID, course_id, sec_id, semester, year),
-
-	 ###
-
-	 foreign key (course_id,sec_id, semester, year) references section
-		on delete cascade,
-	 foreign key (ID) references instructor
-		on delete cascade
+	-- primary key (ID, course_id, sec_id, semester, year),
+	 --foreign key (course_id,sec_id, semester, year) references section
+--		on delete cascade,
+	 --foreign key (ID) references instructor
+	--	on delete cascade
 	);
 
 
