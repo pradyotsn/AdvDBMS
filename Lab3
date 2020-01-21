@@ -1,0 +1,69 @@
+http://www.eecs.qmul.ac.uk/~jane/courses/DB/SQL/SQL_Queries.pdf
+
+1. Select all EMPLOYEE Ssns.
+
+SELECT SSN
+FROM EMPLOYEE;
+
+
+2. All combinations of EMPLOYEE Ssn and DEPARTMENT Dname in the database.
+
+SELECT SSN, DNAME
+FROM EMPLOYEE, DEPARTMENT;
+
+
+3. Retrieve all the attribute values of any EMPLOYEE who works in DEPARTMENT number 5.
+
+SELECT *
+FROM EMPLOYEE
+WHERE DNO = 5;
+
+
+
+4. Retrieve all the attributes of an EMPLOYEE and the attributes of the DEPARTMENT in which he or she works for every employee of the ‘Research’ department.
+
+
+SELECT *
+FROM EMPLOYEE, DEPARTMENT
+WHERE DNAME = ‘Research’ AND DNO = DNUMBER;
+
+
+5. For every project located in ‘Stafford’, list the project number, the controlling department number, and the department manager’s last name, address, and birth date.
+
+SELECT PNUMBER, DNUM, LNAME, ADDRESS, BDATE
+FROM PROJECT, DEPARTMENT, EMPLOYEE
+WHERE DNUM = DNUMBER AND MGRSSN = SSN AND PLOCATION = ‘Stafford’;
+
+6. For each employee, retrieve the employee’s first and last name and the first and last name of his or her immediate supervisor.
+
+SELECT E.FNAME, E.LNAME, S.FNAME, S.LNAME
+FROM EMPLOYEE AS E, EMPLOYEE AS S
+WHERE E.SUPERSSN = S.SSN;
+
+
+7. Retrieve the names of all employees in department 5 who work more than 10 hours per week on the ProductX project. 8. List the names of all employees who have a dependent with the same first name as themselves. 9. Find the names of all employees who are directly supervised by ‘Franklin Wong’.
+
+
+10. Find a list of all project numbers for projects that involve an employee whose last name is ‘Smith’, either as a worker or as a manager of the department that controls the project.
+
+
+11. Find the names of all instructors whose department name includes the substring ‘co’.
+
+
+Use UNIVERSITY database schema for the following exercise.
+
+
+1. Find the titles of courses in the Comp. Sci. department that have 3 credits.
+
+
+2. Find the highest salary of any instructor.
+
+
+3. Find the set of all courses taught either in Fall 2009 as well as in Spring 2010.
+
+
+4. Find the set of all courses taught either in Fall 2009 but not in Spring 2010.
+
+
+
+
