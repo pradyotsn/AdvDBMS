@@ -260,11 +260,29 @@ SELECT PNUMBER, DNUM, LNAME, ADDRESS, BDATE
 FROM PROJECT, DEPARTMENT, EMPLOYEE
 WHERE DNUM = DNUMBER AND MGRSSN = SSN AND PLOCATION = 'Stafford';
 
+
+   PNUMBER       DNUM LNAME           ADDRESS                        BDATE
+---------- ---------- --------------- ------------------------------ ---------
+        10          4 Wallace         Bellaire,TX                    20-JUN-41
+        30          4 Wallace         Bellaire,TX                    20-JUN-41
+	
+	
+
 6. For each employee, retrieve the employee’s first and last name and the first and last name of his or her immediate supervisor.
 
 SELECT E.FNAME, E.LNAME, S.FNAME, S.LNAME
-FROM EMPLOYEE AS E, EMPLOYEE AS S
+FROM EMPLOYEE  E, EMPLOYEE  S
 WHERE E.SUPERSSN = S.SSN;
+
+FNAME           LNAME           FNAME           LNAME
+--------------- --------------- --------------- ---------------
+Jennifer        Wallace         James           Borg
+Franklin        Wong            James           Borg
+Joyce           English         Franklin        Wong
+Ramesh          Narayan         Franklin        Wong
+John            Smith           Franklin        Wong
+Ahmad           Jabbar          Jennifer        Wallace
+Alicia          Zelaya          Jennifer        Wallace
 
 
 7. Retrieve the names of all employees in department 5 who work more than 10 hours per week on the ProductX project. 
@@ -278,7 +296,7 @@ AND HOURS>10
 
 Another possible SQL query uses nesting as follows:
 
-SELECT LNAME, FNAME
+SELECT LNAME, FNAME 
 FROM EMPLOYEEWHERE DNO=5 
 AND SSN IN ( SELECT ESSN
 FROM WORKS_ON
