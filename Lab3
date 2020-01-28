@@ -287,7 +287,7 @@ Alicia          Zelaya          Jennifer        Wallace
 
 7. Retrieve the names of all employees in department 5 who work more than 10 hours per week on the ProductX project. 
 
-SELECT LNAME, FNAMEFROM EMPLOYEE, WORKS_ON, PROJECT
+SELECT LNAME, FNAME FROM EMPLOYEE, WORKS_ON, PROJECT
 WHERE DNO=5 
 AND SSN=ESSN 
 AND PNO=PNUMBER 
@@ -297,13 +297,21 @@ AND HOURS>10
 Another possible SQL query uses nesting as follows:
 
 SELECT LNAME, FNAME 
-FROM EMPLOYEEWHERE DNO=5 
+FROM EMPLOYEE WHERE DNO=5 
 AND SSN IN ( SELECT ESSN
 FROM WORKS_ON
 WHERE HOURS>10 
 AND PNO IN ( SELECT PNUMBER
 FROM PROJECT
 WHERE PNAME='ProductX' ) )
+
+
+LNAME           FNAME
+--------------- ---------------
+Smith           John
+English         Joyce
+
+
 
 8. List the names of all employees who have a dependent with the same first name as themselves. 
 
@@ -314,9 +322,12 @@ WHERE SSN=ESSN AND FNAME=DEPENDENT_NAME
 Another possible SQL query uses nesting as follows:
 
 SELECT LNAME, FNAME
-FROM EMPLOYEEWHERE EXISTS ( SELECT *
+FROM EMPLOYEE WHERE EXISTS ( SELECT *
 FROM DEPENDENT
 WHERE FNAME=DEPENDENT_NAME AND SSN=ESSN )
+
+no rows selected
+
 
 9. Find the names of all employees who are directly supervised by ‘Franklin Wong’.
 SELECT E.LNAME, E.FNAME
@@ -331,23 +342,38 @@ WHERE SUPERSSN IN ( SELECT SSN
 FROM EMPLOYEE
 WHERE FNAME='Franklin' AND LNAME='Wong' )
 
+
+LNAME           FNAME
+--------------- ---------------
+Smith           John
+Narayan         Ramesh
+English         Joyce
+
+
 10. Find a list of all project numbers for projects that involve an employee whose last name is ‘Smith’, either as a worker or as a manager of the department that controls the project.
 
 (SELECT PNAME FROM PROJECT, DEPARTMENT, EMPLOYEE
 WHERE DNUM=DNUMBER AND MGRSSN=SSN AND LNAME='Smith')
 UNION
 (SELECT PNAME FROM PROJECT, WORKS_ON, EMPLOYEE
-WHERE PNUMBER=PNO AND ESSN=SSN AND NAME='Smith')
+WHERE PNUMBER=PNO AND ESSN=SSN AND LNAME='Smith')
+
+PNAME
+---------------
+ProductX
+ProductY
 
 
+
+
+
+Use UNIVERSITY database schema for the following exercise.
 
 11. Find the names of all instructors whose department name includes the substring ‘co’.
 select name
 from instructor
 where name like '%co%'
 
-
-Use UNIVERSITY database schema for the following exercise.
 
 
 1. Find the titles of courses in the Comp. Sci. department that have 3 credits.
