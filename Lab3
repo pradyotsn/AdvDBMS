@@ -1,5 +1,79 @@
 http://www.eecs.qmul.ac.uk/~jane/courses/DB/SQL/SQL_Queries.pdf
 
+
+create table department
+	(dept_name		varchar(20),
+	 building		varchar(15),
+	 budget		    numeric(12,2) check (budget > 0),
+	 primary key (dept_name)
+	);
+
+create table course
+	(course_id		varchar(8),
+	 title			varchar(50),
+	 dept_name		varchar(20),
+	 credits		numeric(2,0) check (credits > 0),
+	 primary key (course_id),
+	 foreign key (dept_name) references department
+	on delete set null
+	);
+
+create table instructor
+	(ID			varchar(5),
+	 name			varchar(20) not null,
+	 dept_name		varchar(20),
+	 salary			numeric(8,2) check (salary > 29000),
+	primary key (ID),
+	foreign key (dept_name) references department
+	on delete set null
+	);
+
+create table section
+	(course_id		varchar(8),
+         sec_id			varchar(8),
+	 semester		varchar(6)
+		check (semester in ('Fall', 'Winter', 'Spring', 'Summer')),
+	 year			numeric(4,0) check (year > 1701 and year < 2100),
+	 building		varchar(15),
+	 room_number		varchar(7),
+	 time_slot_id		varchar(4),
+	 primary key (course_id, sec_id, semester, year),
+	foreign key (course_id) references course
+		on delete cascade,
+	on delete set null
+	);
+
+create table teaches
+	(ID			varchar(5),
+	 course_id		varchar(8),
+	 sec_id			varchar(8),
+	 semester		varchar(6),
+	 year			numeric(4,0),
+	primary key (ID, course_id, sec_id, semester, year),
+	foreign key (course_id,sec_id, semester, year) references section
+   on delete cascade,
+	foreign key (ID) references instructor
+	on delete cascade
+	);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1. Select all EMPLOYEE Ssns.
 
 SELECT SSN
@@ -41,8 +115,51 @@ FROM EMPLOYEE AS E, EMPLOYEE AS S
 WHERE E.SUPERSSN = S.SSN;
 
 
-7. Retrieve the names of all employees in department 5 who work more than 10 hours per week on the ProductX project. 8. List the names of all employees who have a dependent with the same first name as themselves. 9. Find the names of all employees who are directly supervised by ‘Franklin Wong’.
+7. Retrieve the names of all employees in department 5 who work more than 10 hours per week on the ProductX project. 
 
+SELECT LNAME, FNAMEFROM EMPLOYEE, WORKS_ON, PROJECT
+WHERE DNO=5 
+AND SSN=ESSN 
+AND PNO=PNUMBER 
+AND PNAME='ProductX' 
+AND HOURS>10
+
+Another possible SQL query uses nesting as follows:
+
+SELECT LNAME, FNAME
+FROM EMPLOYEEWHERE DNO=5 
+AND SSN IN ( SELECT ESSN
+FROM WORKS_ON
+WHERE HOURS>10 
+AND PNO IN ( SELECT PNUMBER
+FROM PROJECT
+WHERE PNAME='ProductX' ) )
+
+8. List the names of all employees who have a dependent with the same first name as themselves. 
+
+SELECT LNAME, FNAME
+FROM EMPLOYEE, DEPENDENT
+WHERE SSN=ESSN AND FNAME=DEPENDENT_NAME
+
+Another possible SQL query uses nesting as follows:
+
+SELECT LNAME, FNAME
+FROM EMPLOYEEWHERE EXISTS ( SELECT *
+FROM DEPENDENT
+WHERE FNAME=DEPENDENT_NAME AND SSN=ESSN )
+
+9. Find the names of all employees who are directly supervised by ‘Franklin Wong’.
+SELECT E.LNAME, E.FNAME
+FROM EMPLOYEE E, EMPLOYEE S
+WHERE S.FNAME='Franklin' 
+AND S.LNAME='Wong' AND E.SUPERSSN=S.SSN
+
+Another possible SQL query uses nesting as follows:
+
+SELECT LNAME, FNAMEFROM EMPLOYEE
+WHERE SUPERSSN IN ( SELECT SSN
+FROM EMPLOYEE
+WHERE FNAME='Franklin' AND LNAME='Wong' )
 
 10. Find a list of all project numbers for projects that involve an employee whose last name is ‘Smith’, either as a worker or as a manager of the department that controls the project.
 
