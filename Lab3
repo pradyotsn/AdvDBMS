@@ -1,60 +1,68 @@
 http://www.eecs.qmul.ac.uk/~jane/courses/DB/SQL/SQL_Queries.pdf
 
+Department database:
+
+
+DROP TABLE department CASCADE CONSTRAINTS;
+DROP TABLE course CASCADE CONSTRAINTS;
+DROP TABLE instructor CASCADE CONSTRAINTS;
+DROP TABLE section CASCADE CONSTRAINTS;
+DROP TABLE teaches CASCADE CONSTRAINTS;
+
+
+
 
 create table department
-	(dept_name		varchar(20),
-	 building		varchar(15),
-	 budget		    numeric(12,2) check (budget > 0),
+	(dept_name varchar(20),
+	 building varchar(15),
+	 budget numeric(12,2) check (budget > 0),
 	 primary key (dept_name)
 	);
 
 create table course
-	(course_id		varchar(8),
-	 title			varchar(50),
-	 dept_name		varchar(20),
-	 credits		numeric(2,0) check (credits > 0),
+	(course_id varchar(8),
+	title varchar(50),
+	 dept_name varchar(20),
+	 credits numeric(2,0) check (credits > 0),
 	 primary key (course_id),
-	 foreign key (dept_name) references department
-	on delete set null
+	 foreign key (dept_name) references department 
+	 on delete set null
 	);
 
 create table instructor
-	(ID			varchar(5),
-	 name			varchar(20) not null,
-	 dept_name		varchar(20),
-	 salary			numeric(8,2) check (salary > 29000),
-	primary key (ID),
-	foreign key (dept_name) references department
+	(ID varchar(5),
+	 name varchar(20) not null,
+	 dept_name varchar(20),
+	 salary numeric(8,2) check (salary > 29000),
+	primary key (ID), 
+	foreign key (dept_name) references department 
 	on delete set null
 	);
 
 create table section
-	(course_id		varchar(8),
-         sec_id			varchar(8),
-	 semester		varchar(6)
-		check (semester in ('Fall', 'Winter', 'Spring', 'Summer')),
-	 year			numeric(4,0) check (year > 1701 and year < 2100),
-	 building		varchar(15),
-	 room_number		varchar(7),
-	 time_slot_id		varchar(4),
-	 primary key (course_id, sec_id, semester, year),
-	foreign key (course_id) references course
-		on delete cascade,
-	on delete set null
-	);
+(
+course_id varchar(8),
+ sec_id varchar(8),
+ semester varchar(6) check (semester in ('Fall', 'Winter', 'Spring', 'Summer')),
+ year numeric(4,0) check (year > 1701 and year < 2100),
+ building varchar(15),
+ room_number varchar(7),
+ time_slot_id varchar(4),
+ primary key (course_id, sec_id, semester, year), 
+ foreign key (course_id) references course on delete cascade );
 
 create table teaches
-	(ID			varchar(5),
-	 course_id		varchar(8),
-	 sec_id			varchar(8),
-	 semester		varchar(6),
-	 year			numeric(4,0),
-	primary key (ID, course_id, sec_id, semester, year),
-	foreign key (course_id,sec_id, semester, year) references section
-   on delete cascade,
-	foreign key (ID) references instructor
-	on delete cascade
-	);
+ (ID varchar(5),
+ course_id varchar(8),
+ sec_id varchar(8),
+ semester varchar(6),
+ year numeric(4,0),
+ primary key (ID, course_id, sec_id, semester, year),
+ foreign key (course_id,sec_id, semester, year) references section
+ on delete cascade,
+ foreign key (ID) references instructor
+ on delete cascade
+ );
 
 
 
