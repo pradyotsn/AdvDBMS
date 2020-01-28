@@ -415,10 +415,30 @@ ID    NAME
 
 
 3. Find the set of all courses taught either in Fall 2009 as well as in Spring 2010.
+select distinct course_id
+from section
+where semester = ’Fall’ and year= 2009 and
+course_id in (select course_id
+from section
+where semester = ’Spring’ and year= 2010);
 
+COURSE_I
+--------
+CS-101
 
 4. Find the set of all courses taught either in Fall 2009 but not in Spring 2010.
 
+select distinct course_id
+from section
+where semester = 'Fall' and year= 2009 and
+course_id not in (select course_id
+from section
+where semester = 'Spring' and year=
+2010);
 
+COURSE_I
+--------
+CS-347
+PHY-101
 
 
