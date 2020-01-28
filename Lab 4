@@ -1,0 +1,28 @@
+select sum(salary), min(salary),max(salary),avg(salary) from employee3;
+
+select sum(salary),min(salary),max(salary),avg(salary) from employee3 e, department3 d 
+where e.dno=d.dnumber and d.dname='Research';
+
+select count(*) from employee3;
+
+select count(*) from employee3 e, department3 d
+where e.dno=d.dnumber and d.dname='Research';
+
+select count(distinct(salary)) from employee3;
+
+select avg(salary), dname,count(*) from employee3 e, department3 d
+where e.dno=d.dnumber
+group by(d.dname)
+having avg(salary)>30000;
+
+select d.dname, count(*), avg(e.salary) from employee3 e, department3 d
+where e.dno=d.dnumber
+group by(d.dname);
+
+select pnumber,pname, count(*) from project3 p, works_on3 w
+where p.pnumber=w.pno
+group by(pnumber,pname);
+
+select pnumber,pname, count(*) from project3 p, works_on3 w, employee3 e
+where p.pnumber=w.pno and e.ssn=w.essn and p.dnum=5
+group by(pnumber,pname);
