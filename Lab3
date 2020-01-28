@@ -1,5 +1,13 @@
 http://www.eecs.qmul.ac.uk/~jane/courses/DB/SQL/SQL_Queries.pdf
 
+SET SERVEROUTPUT ON SIZE 1000000;
+set pagesize 50000;
+set long 50000;
+SET LINESIZE 5000;
+
+
+
+
 Department database:
 
 
@@ -166,18 +174,65 @@ Lab Exercises (Use company database schema for the following exercise problems)
 SELECT SSN
 FROM EMPLOYEE;
 
+SSN
+---------
+123456789
+333445555
+453453453
+666884444
+888665555
+987654321
+987987987
+999887777
+
 
 2. All combinations of EMPLOYEE Ssn and DEPARTMENT Dname in the database.
 
 SELECT SSN, DNAME
 FROM EMPLOYEE, DEPARTMENT;
 
+SSN       DNAME
+--------- ---------------
+123456789 Administration
+333445555 Administration
+453453453 Administration
+666884444 Administration
+888665555 Administration
+987654321 Administration
+987987987 Administration
+999887777 Administration
+123456789 Headquarters
+333445555 Headquarters
+453453453 Headquarters
+666884444 Headquarters
+888665555 Headquarters
+987654321 Headquarters
+987987987 Headquarters
+999887777 Headquarters
+123456789 Research
+333445555 Research
+453453453 Research
+666884444 Research
+888665555 Research
+987654321 Research
+987987987 Research
+999887777 Research
+
+24 rows selected.
 
 3. Retrieve all the attribute values of any EMPLOYEE who works in DEPARTMENT number 5.
 
 SELECT *
 FROM EMPLOYEE
 WHERE DNO = 5;
+
+FNAME           M LNAME           SSN       BDATE     ADDRESS                        S     SALARY SUPERSSN         DNO
+--------------- - --------------- --------- --------- ------------------------------ - ---------- --------- ----------
+Franklin        T Wong            333445555 08-DEC-55 Houston,TX                     M      40000 888665555          5
+John            B Smith           123456789 09-JAN-65 Houston,TX                     M      30000 333445555          5
+Ramesh          K Narayan         666884444 15-SEP-62 Humble,TX                      M      38000 333445555          5
+Joyce           A English         453453453 31-JUL-72 Houston, TX                    F      25000 333445555          5
+
 
 
 
@@ -186,14 +241,24 @@ WHERE DNO = 5;
 
 SELECT *
 FROM EMPLOYEE, DEPARTMENT
-WHERE DNAME = ‘Research’ AND DNO = DNUMBER;
+WHERE DNAME = 'Research' AND DNO = DNUMBER;
+
+
+FNAME           M LNAME           SSN       BDATE     ADDRESS                        S     SALARY SUPERSSN         DNO DNAME              DNUMBER MGRSSN    MGRSTARTD
+--------------- - --------------- --------- --------- ------------------------------ - ---------- --------- ---------- --------------- ---------- --------- ---------
+Franklin        T Wong            333445555 08-DEC-55 Houston,TX                     M      40000 888665555          5 Research                 5 333445555 22-MAY-78
+John            B Smith           123456789 09-JAN-65 Houston,TX                     M      30000 333445555          5 Research                 5 333445555 22-MAY-78
+Ramesh          K Narayan         666884444 15-SEP-62 Humble,TX                      M      38000 333445555          5 Research                 5 333445555 22-MAY-78
+Joyce           A English         453453453 31-JUL-72 Houston, TX                    F      25000 333445555          5 Research                 5 333445555 22-MAY-78
+
+
 
 
 5. For every project located in ‘Stafford’, list the project number, the controlling department number, and the department manager’s last name, address, and birth date.
 
 SELECT PNUMBER, DNUM, LNAME, ADDRESS, BDATE
 FROM PROJECT, DEPARTMENT, EMPLOYEE
-WHERE DNUM = DNUMBER AND MGRSSN = SSN AND PLOCATION = ‘Stafford’;
+WHERE DNUM = DNUMBER AND MGRSSN = SSN AND PLOCATION = 'Stafford';
 
 6. For each employee, retrieve the employee’s first and last name and the first and last name of his or her immediate supervisor.
 
