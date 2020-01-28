@@ -99,7 +99,7 @@ INSERT INTO COURSE VALUES('CS-190','Game Design','Comp.Sci.',4);
 INSERT INTO COURSE VALUES('CS-315','Robotics','Comp.Sci.',3);
 INSERT INTO COURSE VALUES('CS-319','Image Processing','Comp.Sci.',3);
 INSERT INTO COURSE VALUES('CS-347','Database Sytem Concepts','Comp.Sci.',3);
-INSERT INTO COURSE VALUES('EE-181','Intro. to Digital Systems','Elec. Eng.',3);
+INSERT INTO COURSE VALUES('EE-181','Intro. to Digital Systems','Elec.Eng.',3);
 INSERT INTO COURSE VALUES('FIN-201','Investment Banking','Finance',3);
 INSERT INTO COURSE VALUES('HIS-351','World History','History',3);
 INSERT INTO COURSE VALUES('MU-199','Music Video Production','Music',3);
