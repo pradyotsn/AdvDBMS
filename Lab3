@@ -375,16 +375,43 @@ ProductY
 Use UNIVERSITY database schema for the following exercise.
 
 11. Find the names of all instructors whose department name includes the substring ‘co’.
-select name
-from instructor
-where name like '%co%'
+
+select name from instructor where dept_name like '%Co%';
+
+NAME
+--------------------
+Srinivasan
+Katz
+Brandt
 
 
 
 1. Find the titles of courses in the Comp. Sci. department that have 3 credits.
 
+select title
+from course
+where dept_name = 'Comp.Sci.'
+and credits = 3;
+
+
+TITLE
+--------------------------------------------------
+Robotics
+Image Processing
+Database Sytem Concepts
+
 
 2. Find the highest salary of any instructor.
+
+select ID, name
+from instructor
+where salary = (select max(salary) from instructor)
+
+ID    NAME
+----- --------------------
+22222 Einstein
+
+
 
 
 3. Find the set of all courses taught either in Fall 2009 as well as in Spring 2010.
