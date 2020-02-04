@@ -141,7 +141,7 @@ INSERT INTO dept_locations VALUES (5, 'Houston');
 INSERT INTO dependent VALUES ('333445555','Alice','F','05-APR-86','Daughter');
 INSERT INTO dependent VALUES ('333445555','Theodore','M','25-OCT-83','Son');
 INSERT INTO dependent VALUES ('333445555','Joy','F','03-MAY-58','Spouse');
-INSERT INTO dependent VALUES ('987654321','Abner','M','29-FEB-42','Spouse');
+INSERT INTO dependent VALUES ('987654321','Abner','M','28-FEB-42','Spouse');
 INSERT INTO dependent VALUES ('123456789','Michael','M','01-JAN-88','Son');
 INSERT INTO dependent VALUES ('123456789','Alice','F', '31-DEC-88','Daughter');
 INSERT INTO dependent VALUES ('123456789','Elizabeth','F','05-MAY-67','Spouse');
