@@ -7,8 +7,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JDBC Conn"/>
+	<classpathentry kind="lib" path="C:/Users/Pradyot/git/AdvDBMS/DBMS_Project/Jars/ojdbc10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
