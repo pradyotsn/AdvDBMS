@@ -382,6 +382,13 @@ ProductX  ccccccccccccc
 ProductY  cccccccccccccorrect this
 
 
+ select distinct pnumber from project p, employee e, works_on w where p.dnum=e.dno and e.lname='Smith' and e.ssn=w.essn;
+
+   PNUMBER
+----------
+         1
+         2
+         3
 
 
 
