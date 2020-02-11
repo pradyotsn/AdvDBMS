@@ -1,0 +1,56 @@
+UNIVERSITY DATABASE
+
+create view q1 as
+select s.course_id,s.sec_id,d.building,s.room_number
+from section s,dept d
+where d.building=s.building and
+dept_name='Physics' and
+semester='Fall' and 
+year=2009;
+
+select * from q1;
+
+create view department_total_salary as
+select dept_name,sum(salary) as total_salary
+from instructor
+group by dept_name;
+
+create view instructor_info as
+select i.ID,i.name,d.building
+from instructor i,dept d
+where d.dept_name=i.dept_name;
+
+create view history_instructors as
+select * from instructor
+where dept_name='History';
+
+
+COMPLANY DATABASE
+
+create view ques1 as
+select d.Dname,e.Fname,e.Minit,e.Lname,e.Salary
+from department3 d,employee3 e
+where d.Mgr_ssn=e.Ssn;
+
+create view v2 as
+select e.Fname,e.Minit,e.Lname,e.salary,e1.fname as sup_fname,e1.minit as sup_minit,e1.lname as sup_lname
+from employee3 e,employee3 e1,department3 d
+where e.Super_ssn=e1.Ssn and
+e.Dno=d.Dnumber and d.Dname='Research';
+
+create view v3 as
+select p.pname,d.dname,count(w.Essn) as no_of_employee,sum(hours) as total_hours
+from project3 p,department3 d,works_on3 w
+where p.dnum=d.dnumber and
+p.pnumber=w.pno
+group by (p.pname,d.dname);
+
+create view v4 as
+select p.pname,d.dname,count(w.Essn) as no_of_employee,sum(hours) as total_hours
+from project3 p,department3 d,works_on3 w
+where p.dnum=d.dnumber and
+p.pnumber=w.pno
+group by (p.pname,d.dname)
+having count(w.essn)>1;
+
+
