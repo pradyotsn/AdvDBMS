@@ -1,4 +1,9 @@
-1.Create view course_sections as select course.title, section.building, section.room_number from course, section where course.course_id=section.course_id AND course.dept_name='Physics' AND section.semester='Fall' AND section.year=2009;
+1.Create view course_sections as 
+select course.title, section.building, section.room_number 
+from course, section where course.course_id=section.course_id 
+AND course.dept_name='Physics' AND section.semester='Fall' AND section.year=2009;
+
+
 2.select title FROM COURSE_SECTIONS;
 3.Create view dept_tot_sal as select department.Dname, sum(employee1.salary) AS tot_salary from employee1, department where employee1.Dno=department.Dnumber group by department.Dname;
 4.Create view instructor_info as select instructor.ID, instructor.name, section.building from instructor,section,teaches where instructor.ID=teaches.ID and teaches.course_id=section.course_id;
